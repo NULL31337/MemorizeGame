@@ -9,7 +9,9 @@ import com.zaxxer.hikari.HikariDataSource
 import org.jetbrains.exposed.sql.Database
 
 fun main() {
-    val config = HikariConfig("hikari.properties")
+    val config = HikariConfig()
+    config.driverClassName = System.getenv("JDBC_DRIVER")
+    config.jdbcUrl = System.getenv("JDBC_URL")
     val dataSource = HikariDataSource(config)
 
     Database.connect(dataSource)
