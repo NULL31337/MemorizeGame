@@ -12,6 +12,7 @@ fun main() {
     val config = HikariConfig()
     config.driverClassName = System.getenv("JDBC_DRIVER")
     config.jdbcUrl = System.getenv("JDBC_URL")
+    config.validate()
     val dataSource = HikariDataSource(config)
 
     Database.connect(dataSource)
